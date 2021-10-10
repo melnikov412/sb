@@ -7,6 +7,8 @@ import {
 
 import { Observable } from 'rxjs/Rx';
 import { SearchResult } from './search-result.model';
+import {SearchParamsModel} from './search-params.model';
+import { environment } from '../../environments/environment';
 
 /*
   This API key may or may not work for you. Your best bet is to issue your own
@@ -61,6 +63,22 @@ export class YouTubeSearchService {
         });
       });
     });
+  }
+
+
+  getFromLocalStorage(index: string): SearchParamsModel[] | null {
+    return  JSON.parse(localStorage.getItem(index));
+  }
+
+  setLocalStorageParams(params: SearchParamsModel): void {
+    const lsKey = environment.lsKey;
+    const tempArray = this.getFromLocalStorage(lsKey);
+    if (tempArray) {
+      tempArray.unshift(params);
+      localStorage.setItem(lsKey, JSON.stringify(tempArray));
+    }else {
+      localStorage.setItem(lsKey, JSON.stringify([params]));
+    }
   }
 
 }

@@ -5,6 +5,7 @@ import { YouTubeSearchService } from 'app/you-tube-search/you-tube-search.servic
 import { SearchResult } from 'app/you-tube-search/search-result.model';
 
 import { environment } from '../../../environments/environment';
+import {SearchParamsModel} from '../search-params.model';
 
 @Component({
   selector: 'app-search-form',
@@ -51,6 +52,12 @@ export class SearchFormComponent implements OnInit {
         (results: SearchResult[]) => { // on sucesss
           this.loading.emit(false);
           this.results.emit(results);
+          // console.log('////  RESULT ///  DATA: ', Date.now(), ' ЗАПРОС: ', this.form.value.textInput, ' ТИП: ', this.tipeQuery);
+          this.youtube.setLocalStorageParams(new SearchParamsModel({
+            time: Date.now(),
+            inputText: this.form.value.textInput,
+            tipe: this.tipeQuery
+          }));
           this.form.reset();
         },
         (err: any) => { // on error
