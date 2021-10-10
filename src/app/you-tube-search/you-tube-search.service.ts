@@ -19,10 +19,11 @@ import { SearchResult } from './search-result.model';
   your browser is "localhost"
 */
 export const YOUTUBE_API_KEY =
-  'AIzaSyDOfT_BO81aEZScosfTYMruJobmpjqNeEk';
+  'AIzaSyCkF0FeQxgvG8Oe8NWX_LDnPsjSFYvpRgI';
+  // 'AIzaSyDOfT_BO81aEZScosfTYMruJobmpjqNeEk';
 export const YOUTUBE_API_URL =
   'https://www.googleapis.com/youtube/v3/search';
-//'https://www.googleapis.com/youtube/v3/channels';
+// 'https://www.googleapis.com/youtube/v3/channels';
 
 /**
  * YouTubeService connects to the YouTube API
@@ -47,7 +48,7 @@ export class YouTubeSearchService {
     const queryUrl = `${this.apiUrl}?${params}`;
     return this.http.get(queryUrl).map(response => {
       return <any>response['items'].map(item => {
-         console.log("raw item", item); // uncomment if you want to debug
+         console.log('raw item', item); // uncomment if you want to debug
         return new SearchResult({
           id: item.id.videoId,
           title: item.snippet.title,
