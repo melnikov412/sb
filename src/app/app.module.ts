@@ -9,6 +9,7 @@ import { SearchResultComponent } from './you-tube-search/search-result.component
 import { SearchBoxComponent } from './you-tube-search/search-box.component';
 import { youTubeSearchInjectables } from './you-tube-search/you-tube-search.injectables';
 import {SearchFormComponent} from './you-tube-search/search-form/search-form.component';
+import {SearchTypeComponent} from './you-tube-search/search-type/search-type.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import {SearchFormComponent} from './you-tube-search/search-form/search-form.com
     YouTubeSearchComponent,
     SearchResultComponent,
     SearchBoxComponent,
-    SearchFormComponent
+    SearchFormComponent,
+    SearchTypeComponent
   ],
   imports: [
     BrowserModule,

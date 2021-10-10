@@ -1,5 +1,13 @@
 
 <div class="container">
+  <!-- ///////////////////////////////////////////////////////////////////////////////// -->
+  <div class="btn-group">
+    <button type="button" class="btn btn-default" [class.active]="buttonActive === env.buttonActive" (click)="buttonActive = env.buttonActive">Search in all categories</button>
+    <app-search-type *ngFor="let btn of buttons"
+                     [button]="btn" (buttonActive)="updateButtonActive($event)" [activBtn]="buttonActive"
+    ></app-search-type>
+  </div>
+  <!-- ///////////////////////////////////////////////////////////////////////////////// -->
   <div *ngIf="form.get('textInput').invalid && form.get('textInput').touched" class="ng-invalid error-massege">
     Enter at least 2 characters
   </div>

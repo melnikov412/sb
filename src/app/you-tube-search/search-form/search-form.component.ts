@@ -4,6 +4,8 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import { YouTubeSearchService } from 'app/you-tube-search/you-tube-search.service';
 import { SearchResult } from 'app/you-tube-search/search-result.model';
 
+import { environment } from '../../../environments/environment';
+
 @Component({
   selector: 'app-search-form',
   templateUrl: './search-form.component.html',
@@ -13,9 +15,18 @@ export class SearchFormComponent implements OnInit {
   @Output() loading: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() results: EventEmitter<SearchResult[]> = new EventEmitter<SearchResult[]>();
 
+  env = environment;
+  buttonActive = this.env.buttonActive;
+  tipeQuery: string | null = null;
+  buttons = this.env.buttons;
+  textInput = '';
 
   form: FormGroup;
 
+  updateButtonActive($event: string) {
+    this.buttonActive = $event;
+    // console.log('APP-COMPONENT buttonActive: ', this.buttonActive);
+  }
 
   constructor(
     private youtube: YouTubeSearchService,
