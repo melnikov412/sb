@@ -41,7 +41,7 @@ export class SearchBoxComponent implements OnInit {
       .debounceTime(250)                         // only once every 250ms
       .do(() => this.loading.emit(true))         // enable loading
       // search, discarding old events if new input comes in
-      .map((query: string) => this.youtube.search(query))
+      .map((query: string) => this.youtube.search(query, null))
       .switch()
       // act on the return of the search
       .subscribe(

@@ -43,7 +43,11 @@ export class SearchFormComponent implements OnInit {
 
   submit() {
     if (this.form.valid) {
-      this.youtube.search(this.form.value.textInput).subscribe(
+      this.tipeQuery = (this.buttonActive === this.env.buttonActive) ? null : ('type=' + this.buttonActive);
+      this.textInput = this.form.value.textInput;
+
+      this.youtube.search(this.form.value.textInput, this.tipeQuery).subscribe(
+      //  this.youtube.search(this.form.value.textInput).subscribe(
         (results: SearchResult[]) => { // on sucesss
           this.loading.emit(false);
           this.results.emit(results);

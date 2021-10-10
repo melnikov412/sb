@@ -37,25 +37,30 @@ export class YouTubeSearchService {
     @Inject(YOUTUBE_API_URL) private apiUrl: string
   ) {}
 
-  search(query: string): Observable<SearchResult[]> {
+  search(query: string, typeQuery: string | null): Observable<SearchResult[]> {
+   // console.log('////// typeQuery: ', typeQuery);
     const params: string = [
       `q=${query}`,
       `key=${this.apiKey}`,
-      `type=video`,
+      `${typeQuery}`,
       `part=snippet`,
       `maxResults=10`
     ].join('&');
     const queryUrl = `${this.apiUrl}?${params}`;
+   // console.log('////// queryUrl: ', queryUrl);
     return this.http.get(queryUrl).map(response => {
       return <any>response['items'].map(item => {
-         console.log('raw item', item); // uncomment if you want to debug
+        // console.log('raw item', item); // uncomment if you want to debug
         return new SearchResult({
           id: item.id.videoId,
           title: item.snippet.title,
           description: item.snippet.description,
-          thumbnailUrl: item.snippet.thumbnails.high.url
+          thumbnailUrl: item.snippet.thumbnails.high.url,
+          publishedAt: item.snippet.publishedAt,
+          kind: item.id.kind
         });
       });
     });
   }
+
 }

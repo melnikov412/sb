@@ -1,6 +1,5 @@
 import {
   Component,
-  OnInit,
   Input
 } from '@angular/core';
 import { SearchResult } from './search-result.model';
@@ -10,12 +9,6 @@ import { SearchResult } from './search-result.model';
   selector: 'app-search-result',
   templateUrl: './search-result.component.html'
 })
-export class SearchResultComponent implements OnInit {
+export class SearchResultComponent {
   @Input() result: SearchResult;
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
 }
