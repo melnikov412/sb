@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {YouTubeSearchService} from '../you-tube-search.service';
 import {SearchParamsModel} from '../search-params.model';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-search-list',
@@ -15,7 +16,7 @@ export class SearchListComponent implements OnInit {
 
 
   ngOnInit() {
-    this.listAll = this.youtube.getFromLocalStorage('index');
+    this.listAll = this.youtube.getFromLocalStorage(environment.lsKey);
     console.log('/// LIST ALL: ', this.listAll);
   }
 

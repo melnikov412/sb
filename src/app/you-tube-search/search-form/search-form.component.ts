@@ -6,6 +6,7 @@ import { SearchResult } from 'app/you-tube-search/search-result.model';
 
 import { environment } from '../../../environments/environment';
 import {SearchParamsModel} from '../search-params.model';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-search-form',
@@ -31,11 +32,18 @@ export class SearchFormComponent implements OnInit {
 
   constructor(
     private youtube: YouTubeSearchService,
+    private route: ActivatedRoute
     ) {}
 
   ngOnInit() {
+    this.route.queryParams.subscribe((params) => {
+      this.textInput = params.inputText;
+      if (params.tipe) {
+        this.buttonActive = params.tipe;
+      }
+    });
     this.form = new FormGroup({
-      textInput: new FormControl('', [
+      textInput: new FormControl(this.textInput, [
         Validators.required,
         Validators.minLength(2)
       ])
@@ -44,7 +52,7 @@ export class SearchFormComponent implements OnInit {
 
   submit() {
     if (this.form.valid) {
-      this.tipeQuery = (this.buttonActive === this.env.buttonActive) ? null : ('type=' + this.buttonActive);
+      this.tipeQuery = (this.buttonActive === this.env.buttonActive) ? null : this.buttonActive;
       this.textInput = this.form.value.textInput;
 
       this.youtube.search(this.form.value.textInput, this.tipeQuery).subscribe(

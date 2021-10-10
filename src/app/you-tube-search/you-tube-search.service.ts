@@ -41,9 +41,11 @@ export class YouTubeSearchService {
 
   search(query: string, typeQuery: string | null): Observable<SearchResult[]> {
    // console.log('////// typeQuery: ', typeQuery);
+    typeQuery = (typeQuery) ? ('type=' + typeQuery) : null;
     const params: string = [
       `q=${query}`,
       `key=${this.apiKey}`,
+      // `type=${typeQuery}`,
       `${typeQuery}`,
       `part=snippet`,
       `maxResults=10`
