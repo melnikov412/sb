@@ -5,7 +5,8 @@ import {SearchListComponent} from './you-tube-search/search-list/search-list.com
 
 const routers: Routes = [
   {path: '', component: YouTubeSearchComponent},
-  {path: 'searchlist', component: SearchListComponent}
+  {path: 'searchlist', component: SearchListComponent},
+  {path: '**', component: YouTubeSearchComponent},
 ];
 
 @NgModule({
