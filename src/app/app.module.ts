@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import {AppRoutingModule} from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { YouTubeSearchComponent } from './you-tube-search/you-tube-search.component';
@@ -13,7 +14,7 @@ import {SearchFormComponent} from './you-tube-search/search-form/search-form.com
 import {SearchTypeComponent} from './you-tube-search/search-type/search-type.component';
 import {SearchElementComponent} from './you-tube-search/search-element/search-element.component';
 import {SearchListComponent} from './you-tube-search/search-list/search-list.component';
-import {AppRoutingModule} from './app-routing.module';
+
 import { MainMenuComponent } from './main-menu/main-menu.component';
 
 @NgModule({

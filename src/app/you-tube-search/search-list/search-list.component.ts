@@ -17,7 +17,7 @@ export class SearchListComponent implements OnInit {
 
   ngOnInit() {
     this.listAll = this.youtube.getFromLocalStorage(environment.lsKey);
-    console.log('/// LIST ALL: ', this.listAll);
+    // console.log('/// LIST ALL: ', this.listAll);
   }
 
 }
