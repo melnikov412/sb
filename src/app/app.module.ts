@@ -14,6 +14,7 @@ import {SearchTypeComponent} from './you-tube-search/search-type/search-type.com
 import {SearchElementComponent} from './you-tube-search/search-element/search-element.component';
 import {SearchListComponent} from './you-tube-search/search-list/search-list.component';
 import {AppRoutingModule} from './app-routing.module';
+import { MainMenuComponent } from './main-menu/main-menu.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {AppRoutingModule} from './app-routing.module';
     SearchFormComponent,
     SearchTypeComponent,
     SearchListComponent,
-    SearchElementComponent
+    SearchElementComponent,
+    MainMenuComponent
   ],
   imports: [
     BrowserModule,
